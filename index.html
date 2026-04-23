@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ben Oz — QA Intern & CS Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .case-video {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin-top: 1rem;
+  border: 1px solid var(--ink);
+  background: #000;
+}
+
+    :root {
+      --ink: #0f0e0d;
+      --ink2: #1e1c1a;
+      --paper: #f5f0e8;
+      --paper2: #ede7d9;
+      --paper3: #e4ddd0;
+      --red: #c0392b;
+      --red-light: #e8d5d2;
+      --muted: #8a8074;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Space Grotesk', sans-serif;
+      --nav-h: 78px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(245, 240, 232, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.3rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .nav-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--red);
+      padding: 0.45rem 0.95rem;
+      white-space: nowrap;
+    }
+
+    #hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1.5px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 4rem;
+      border-right: 1.5px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--red);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(4.2rem, 9vw, 8.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      margin-bottom: auto;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero-name .italic {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero-left-bottom {
+      padding-top: 3rem;
+      border-top: 1px solid var(--paper3);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.25s ease both;
+    }
+
+    .hero-pill {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--ink);
+      padding: 0.7rem 1.4rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-pill:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-2px);
+    }
+
+    .hero-pill.filled {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero-pill.filled:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .hero-right {
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .hero-image-area {
+      background: var(--paper2);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+
+    .hero-initials {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(8rem, 18vw, 16rem);
+      color: var(--paper3);
+      line-height: 1;
+      user-select: none;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .hero-role-tag {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--red);
+      color: var(--paper);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transform: rotate(-2deg);
+    }
+
+    .hero-right-bottom {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 320px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .hero-year {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--paper3);
+      white-space: nowrap;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 2rem 3rem;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .section-index {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .section-rule {
+      width: 60px;
+      height: 1.5px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    #about {
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .about-body {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .about-text {
+      padding: 4rem 3rem;
+      border-right: 1.5px solid var(--ink);
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--ink2);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .about-text p strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .about-text blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.45;
+      color: var(--ink);
+      border-left: 3px solid var(--red);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .about-sidebar {
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .sidebar-stat {
+      border-bottom: 1px solid var(--paper3);
+      padding-bottom: 2rem;
+    }
+
+    .sidebar-stat:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 3.5rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+
+    .stat-num span {
+      color: var(--red);
+    }
+
+    .stat-lbl {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    #projects {
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 80px minmax(320px, 1.25fr) minmax(320px, 1.15fr) 150px;
+      min-height: 210px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--paper3);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .project-row:last-child {
+      border-bottom: none;
+    }
+
+    .project-row:hover {
+      background: var(--paper2);
+    }
+
+    .proj-num,
+    .proj-main,
+    .proj-desc,
+    .proj-link {
+      height: 100%;
+    }
+
+    .proj-num {
+      padding: 2.5rem 1.2rem;
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--muted);
+      border-right: 1px solid var(--paper3);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .proj-main {
+      padding: 2.5rem 2.3rem;
+      border-right: 1px solid var(--paper3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: transform 0.25s ease;
+    }
+
+    .proj-desc {
+      padding: 2.5rem 2.3rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.85;
+      font-weight: 300;
+      border-right: 1px solid var(--paper3);
+      display: flex;
+      align-items: center;
+      transition: transform 0.25s ease;
+    }
+
+    .proj-link {
+      padding: 2.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.95rem;
+      transition: transform 0.25s ease;
+    }
+
+    .project-row:hover .proj-main,
+    .project-row:hover .proj-desc,
+    .project-row:hover .proj-link {
+      transform: translateY(-3px);
+    }
+
+    .proj-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.42rem;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+    }
+
+    .proj-tags {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-top: 0.9rem;
+    }
+
+    .proj-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid var(--red-light);
+      padding: 0.22rem 0.6rem;
+      background: var(--red-light);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-row:hover .proj-tag {
+      transform: translateY(-1px);
+    }
+
+    .proj-link a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--red);
+      padding-bottom: 2px;
+      transition: color 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .proj-link a:hover {
+      color: var(--red);
+      transform: translateX(-2px);
+      opacity: 0.95;
+    }
+
+    .expand-btn {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      border: 1.5px solid var(--ink);
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      font-family: var(--sans);
+    }
+
+    .expand-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-2px);
+    }
+
+    .project-details {
+      display: none;
+      border-top: 1px solid var(--paper3);
+      border-bottom: 1px solid var(--paper3);
+      background: var(--paper2);
+      scroll-margin-top: 100px;
+    }
+
+    .project-details.open {
+      display: block;
+    }
+
+    .case-study-content {
+      padding: 2.5rem 3rem;
+      max-width: 1000px;
+    }
+
+    .case-study-content h3 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .case-block {
+      margin-bottom: 2.5rem;
+    }
+
+    .case-block h4 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--red);
+    }
+
+    .case-block p,
+    .case-block li {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+
+    .case-block ul {
+      padding-left: 1.3rem;
+      margin-top: 0.8rem;
+    }
+
+    .case-note {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .case-img {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin-top: 1rem;
+      border: 1px solid var(--ink);
+      background: white;
+    }
+
+    #skills {
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .skills-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .skill-col {
+      padding: 3.5rem 3rem;
+      border-right: 1.5px solid var(--ink);
+    }
+
+    .skill-col:last-child {
+      border-right: none;
+    }
+
+    .skill-col-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--paper3);
+    }
+
+    .skill-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--paper3);
+    }
+
+    .skill-entry:last-child {
+      border-bottom: none;
+    }
+
+    .skill-nm {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink2);
+    }
+
+    .skill-dots {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--paper3);
+    }
+
+    .dot.filled {
+      background: var(--red);
+    }
+
+    #contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+
+    .contact-left {
+      padding: 5rem 3rem;
+      border-right: 1.5px solid var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-big {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-big em {
+      font-style: italic;
+      color: var(--red);
+      display: block;
+    }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 360px;
+      margin-top: 2rem;
+    }
+
+    .contact-cta {
+      display: inline-block;
+      margin-top: 3rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-cta:hover {
+      background: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .contact-right {
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+      background: var(--paper2);
+    }
+
+    .contact-line {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      border-bottom: 1px solid var(--paper3);
+      padding-bottom: 2rem;
+    }
+
+    .contact-line:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-lbl {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-val {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.15s ease;
+      word-break: break-word;
+    }
+
+    .contact-val:hover {
+      color: var(--red);
+    }
+
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: var(--ink);
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--paper3);
+    }
+
+    footer .red {
+      color: var(--red);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .hero-left {
+        min-height: calc(100vh - var(--nav-h));
+        border-right: none;
+        padding: 4rem 1.5rem 3rem;
+      }
+
+      .section-header {
+        padding: 1.5rem;
+      }
+
+      .about-body {
+        grid-template-columns: 1fr;
+      }
+
+      .about-text {
+        border-right: none;
+        border-bottom: 1.5px solid var(--ink);
+        padding: 2.5rem 1.5rem;
+      }
+
+      .about-sidebar {
+        padding: 2.5rem 1.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .sidebar-stat {
+        border-bottom: none;
+        min-width: 150px;
+      }
+
+      .project-row {
+        grid-template-columns: 70px 1.1fr 1.2fr 130px;
+        min-height: 230px;
+      }
+
+      .proj-main,
+      .proj-desc,
+      .proj-link {
+        padding: 2rem 1.5rem;
+      }
+
+      .skills-body {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-col {
+        border-right: none;
+        border-bottom: 1.5px solid var(--ink);
+        padding: 2.5rem 1.5rem;
+      }
+
+      .skill-col:last-child {
+        border-bottom: none;
+      }
+
+      #contact {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-left {
+        border-right: none;
+        border-bottom: 1.5px solid var(--ink);
+        padding: 3rem 1.5rem;
+      }
+
+      .contact-right {
+        padding: 3rem 1.5rem;
+      }
+
+      footer {
+        padding: 1.5rem;
+      }
+
+      .case-study-content {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 780px) {
+      nav {
+        height: auto;
+        min-height: var(--nav-h);
+        padding: 0.95rem 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.8rem;
+      }
+
+      .nav-links a {
+        font-size: 0.68rem;
+      }
+
+      #hero {
+        padding-top: 96px;
+      }
+
+      .section-header {
+        padding: 1.2rem 1rem;
+        flex-wrap: wrap;
+      }
+
+      .about-text,
+      .about-sidebar,
+      .skill-col,
+      .contact-left,
+      .contact-right,
+      .case-study-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .project-row {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .proj-num,
+      .proj-main,
+      .proj-desc,
+      .proj-link {
+        border-right: none;
+        padding: 1rem;
+      }
+
+      .proj-num {
+        padding-bottom: 0;
+        justify-content: flex-start;
+      }
+
+      .proj-main {
+        padding-top: 0.65rem;
+      }
+
+      .proj-desc {
+        border-top: 1px solid var(--paper3);
+        align-items: flex-start;
+      }
+
+      .proj-link {
+        padding-top: 0.4rem;
+        align-items: flex-start;
+      }
+
+      .project-row:hover .proj-main,
+      .project-row:hover .proj-desc,
+      .project-row:hover .proj-link {
+        transform: none;
+      }
+
+      .proj-name {
+        font-size: 1.22rem;
+      }
+
+      .hero-left-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-pill {
+        width: 100%;
+        text-align: center;
+      }
+
+      .about-text blockquote {
+        font-size: 1.2rem;
+      }
+
+      .skill-entry {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .case-study-content h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#hero">Ben Oz</a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#project6-details">Case Study</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <span class="nav-tag">Open to work</span>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-eyebrow">QA Intern · CS Student · Charlotte NC</div>
+        <h1 class="hero-name">
+          Ben<br />
+          <span class="italic">Oz.</span>
+        </h1>
+      </div>
+
+      <div class="hero-left-bottom">
+        <a href="#projects" class="hero-pill filled">View work</a>
+        <a href="#contact" class="hero-pill">Contact me</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-image-area">
+        <div class="hero-initials">BO</div>
+        <div class="hero-role-tag">Quality Assurance</div>
+      </div>
+
+      <div class="hero-right-bottom">
+        <p class="hero-desc">
+          Breaking software intentionally so users never have to. CS student with a sharp eye for edge cases.
+        </p>
+        <span class="hero-year">2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-header">
+      <span class="section-index">01 — Profile</span>
+      <h2 class="section-heading">About me</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="about-body">
+      <div class="about-text">
+        <p>
+          Hey — I'm Ben. A <strong>Computer Science student</strong> who stumbled into QA and never looked back.
+          There's something deeply satisfying about understanding a system well enough to know exactly where it'll crack under pressure.
+        </p>
+
+        <blockquote>
+          "Quality isn't a phase at the end of development — it's a mindset baked into every decision."
+        </blockquote>
+
+        <p>
+          As a <strong>QA Intern</strong>, I focus on testing strategy, usability, and building reliable digital experiences.
+          Outside of testing, I enjoy creating web projects, exploring system behavior, and improving products through thoughtful iteration.
+        </p>
+
+        <p>
+          I'm currently looking for opportunities where I can grow, contribute, and continue bridging the gap between engineering,
+          quality, and user experience.
+        </p>
+      </div>
+
+      <div class="about-sidebar">
+        <div class="sidebar-stat">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-lbl">Years coding</div>
+        </div>
+
+        <div class="sidebar-stat">
+          <div class="stat-num">6<span>+</span></div>
+          <div class="stat-lbl">Projects built</div>
+        </div>
+
+        <div class="sidebar-stat">
+          <div class="stat-num">QA</div>
+          <div class="stat-lbl">Testing mindset</div>
+        </div>
+
+        <div class="sidebar-stat">
+          <div class="stat-num">CS</div>
+          <div class="stat-lbl">Degree in progress (May 26')</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-index">02 — Work</span>
+      <h2 class="section-heading">Projects</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">I</div>
+      <div class="proj-main">
+        <div class="proj-name">Catering Web Application Design &amp; Development</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">jQuery</span>
+          <span class="proj-tag">AJAX</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Developed an events catering website to streamline customer orders with responsive UI, asynchronous requests,
+        and client-side form validation.
+      </div>
+      <div class="proj-link">
+        <a href="https://webpages.charlotte.edu/boz/Project4/index.html" target="_blank">Website ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">II</div>
+      <div class="proj-main">
+        <div class="proj-name">Computer Hardware Performance Tool</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Java</span>
+          <span class="proj-tag">OOP</span>
+          <span class="proj-tag">Hardware</span>
+          <span class="proj-tag">Performance Tool</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Developed a Java application to evaluate hardware performance and recommend graphics settings using object-oriented programming
+        and multi-device comparisons.
+      </div>
+      <div class="proj-link">
+        <a href="https://github.com/BennyBoo30" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">III</div>
+      <div class="proj-main">
+        <div class="proj-name">Responsive UI/UX Prototype for UNCC Admissions Web</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">UI/UX</span>
+          <span class="proj-tag">Accessibility</span>
+          <span class="proj-tag">Mobile-First</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Designed a Figma prototype focused on accessibility, user flows, and mobile-first design using feedback-driven iteration.
+      </div>
+      <div class="proj-link">
+        <a href="https://github.com/BennyBoo30" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">IV</div>
+      <div class="proj-main">
+        <div class="proj-name">Recipe Web Application Design &amp; Development</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JSON</span>
+          <span class="proj-tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Built a responsive recipe web application that lets users browse and search recipes by name, description, and ingredients.
+      </div>
+      <div class="proj-link">
+        <a href="https://github.com/Jusepez11/What-Can-We-Cook" target="_blank">GitHub ↗</a>
+        <a href="https://what-can-we-cook.onrender.com/Recipes.html" target="_blank">Website ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="proj-num">V</div>
+      <div class="proj-main">
+        <div class="proj-name">Responsive UI/UX Prototype for Yale School of Art Web</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">UI/UX</span>
+          <span class="proj-tag">Accessibility</span>
+          <span class="proj-tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Built mobile and desktop Figma flows with accessible navigation, form validation, search interactions, loading states,
+        and dark mode support.
+      </div>
+      <div class="proj-link">
+        <a href="https://www.figma.com/design/fqoenoO4JaLWZZ7y0kLSSS/Assignment-7?node-id=0-1&t=o4rgz5XQBv3WsP4Q-1" target="_blank">Figma ↗</a>
+      </div>
+    </div>
+
+    <div class="project-row expandable-project">
+      <div class="proj-num">VI</div>
+      <div class="proj-main">
+        <div class="proj-name">Yale School of Art Website Redesign (Capstone Project)</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">jQuery</span>
+          <span class="proj-tag">AJAX</span>
+          <span class="proj-tag">Case Study</span>
+        </div>
+      </div>
+      <div class="proj-desc">
+        Capstone project at UNCC where I redesigned and developed the Yale School of Art website as a case study.
+        Click below to view the full process: problem, critique, redesign decisions, testing, and final outcome.
+      </div>
+      <div class="proj-link">
+        <a href="https://github.com/bennnyboo3" target="_blank">GitHub ↗</a>
+        <button class="expand-btn" type="button" aria-expanded="false" aria-controls="project6-details">
+          View Full Case Study ↓
+        </button>
+      </div>
+    </div>
+
+    <div class="project-details" id="project6-details">
+      <div class="case-study-content">
+        <h3>Case Study: Yale School of Art Website Redesign</h3>
+
+        <div class="case-block">
+          <h4>1. Problem Statement</h4>
+          <p>
+            The original Yale School of Art website had a visually cluttered experience that made it difficult for users to
+            quickly understand page hierarchy, navigate content, and complete common tasks. The site lacked clear structure,
+            consistent visual organization, and a more intuitive responsive experience for both desktop and mobile users.
+          </p>
+          <p>
+            My goal was to redesign the experience so it felt clearer, more modern, easier to navigate, and more accessible
+            without losing the creative identity behind the institution.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4>2. Critique and Analysis</h4>
+          <p>
+            I began by reviewing the original site’s layout, typography, navigation structure, and content grouping.
+            During this critique, I identified issues with inconsistent hierarchy, dense page composition, and limited
+            clarity for first-time visitors trying to find important information.
+          </p>
+          <p>
+            I focused on the following design gaps:
+          </p>
+          <ul>
+            <li>Weak visual hierarchy that made content harder to scan</li>
+            <li>Navigation that felt overwhelming and less intuitive</li>
+            <li>Inconsistent spacing and layout rhythm across sections</li>
+            <li>Need for a more polished mobile-first experience</li>
+          </ul>
+         
+          <img src="images/YaleOGweb.png" alt="Original Yale School of Art website screenshot" class="case-img" />
+        </div>
+
+        <div class="case-block">
+          <h4>3. Redesign Process</h4>
+          <p>
+            After identifying the main usability and layout issues, I created wireframes and higher-fidelity interface concepts
+            to reorganize the experience. I explored how to simplify navigation, improve readability, and create a stronger
+            sense of structure across the site.
+          </p>
+          <p>
+            My redesign decisions focused on:
+          </p>
+          <ul>
+            <li>Stronger page hierarchy through typography and layout balance</li>
+            <li>Cleaner spacing to reduce visual clutter</li>
+            <li>More intuitive navigation patterns for desktop and mobile</li>
+            <li>Responsive design decisions that preserved usability across devices</li>
+            <li>A more modern UI while still keeping the project visually distinctive</li>
+          </ul>
+          <img src="images/Sketches.png" alt=sketechs prototype for Yale Redesign" class="case-img" />
+          <img src="images/LowFidwire.png" alt="Wireframe for Yale redesign" class="case-img" />
+          <img src="images/FigmaHighFid.png" alt="Figma prototype for Yale redesign" class="case-img" />
+        </div>
+
+        <div class="case-block">
+          <h4>4. Testing and Feedback</h4>
+          <p>
+            I evaluated the redesign through critique, feedback, and review of the user flow. I looked at whether the new design
+            improved navigation clarity, readability, and the overall ease of moving through the site.
+          </p>
+          <p>
+            Based on feedback, I refined several parts of the design:
+          </p>
+          <ul>
+            <li>Simplified navigation labels to make sections easier to understand</li>
+            <li>Adjusted spacing and grouping to improve readability</li>
+            <li>Refined visual hierarchy so key content stood out more clearly</li>
+            <li>Improved mobile responsiveness and section flow</li>
+          </ul>
+          <p>
+            These updates helped create a more organized and user-friendly final experience compared to the original version.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4>5. Final Product</h4>
+          <p>
+            The final redesign presents a more accessible, structured, and modern version of the Yale School of Art website.
+            Compared to the original design, the updated experience offers clearer navigation, improved layout consistency,
+            and a stronger responsive interface for users on multiple screen sizes.
+          </p>
+          <p>
+            <a href="need to delpoy" target="_blank">View Live Project ↗</a>
+          </p>
+          <p class="case-note">
+            
+          </p>
+          <video class="case-video" controls playsinline>
+          <source src="images/FinalWeb.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-index">03 — Toolkit</span>
+      <h2 class="section-heading">Skills</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="skills-body">
+      <div class="skill-col">
+        <div class="skill-col-title">Languages</div>
+        <div class="skill-entry"><span class="skill-nm">Java</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">JavaScript</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">HTML</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">SQL</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Python</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+
+      <div class="skill-col">
+        <div class="skill-col-title">QA &amp; Testing</div>
+        <div class="skill-entry"><span class="skill-nm">Manual testing project</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Bug reports</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Test plan / documentation</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Basic API testing</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Testing fundamentals</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      </div>
+
+      <div class="skill-col">
+        <div class="skill-col-title">Tools &amp; Concepts</div>
+        <div class="skill-entry"><span class="skill-nm">Git / GitHub</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">SQL basics</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">REST APIs</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Mobile testing basics</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+        <div class="skill-entry"><span class="skill-nm">Performance testing basics</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-left">
+      <div>
+        <h2 class="contact-big">
+          Let's<br />
+          <em>work<br />together.</em>
+        </h2>
+        <p class="contact-sub">
+          Open to internships, collaborations, and conversations about quality software. I reply within 24 hours.
+        </p>
+      </div>
+
+      <a href="mailto:bensinxd@gmail.com" class="contact-cta">Send a message →</a>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-line">
+        <span class="contact-lbl">Email</span>
+        <a href="mailto:bensinxd@gmail.com" class="contact-val">bensinxd@gmail.com</a>
+      </div>
+
+      <div class="contact-line">
+        <span class="contact-lbl">GitHub</span>
+        <a href="https://github.com/BennyBoo30" target="_blank" class="contact-val">github.com/BennyBoo30</a>
+      </div>
+
+      <div class="contact-line">
+        <span class="contact-lbl">LinkedIn</span>
+        <a href="https://linkedin.com/in/benozcs1993" target="_blank" class="contact-val">www.linkedin.com/in/benozcs1993</a>
+      </div>
+
+      <div class="contact-line">
+        <span class="contact-lbl">Location</span>
+        <span class="contact-val" style="cursor: default;">Charlotte, NC</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Ben Oz</p>
+    <p>Built with <span class="red">♥</span> — HTML · CSS · JS</p>
+    <p>Deployed on GitHub Pages</p>
+  </footer>
+
+  <script>
+    const expandBtn = document.querySelector('.expand-btn');
+    const projectDetails = document.getElementById('project6-details');
+
+    if (expandBtn && projectDetails) {
+      expandBtn.addEventListener('click', () => {
+        const isOpen = projectDetails.classList.contains('open');
+
+        projectDetails.classList.toggle('open');
+        expandBtn.setAttribute('aria-expanded', String(!isOpen));
+        expandBtn.textContent = isOpen ? 'View Full Case Study ↓' : 'Hide Case Study ↑';
+
+        if (!isOpen) {
+          setTimeout(() => {
+            projectDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 120);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
