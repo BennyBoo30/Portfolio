@@ -536,6 +536,10 @@
       display: block;
     }
 
+    #project6-details {
+      scroll-margin-top: 110px;
+    }
+
     .case-study-content {
       padding: 2.5rem 3rem;
       max-width: 1000px;
@@ -1276,7 +1280,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#project6-details">Case Study</a></li>
+      <li><a href="#project6-details" id="case-study-nav-link">Case Study</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1834,20 +1838,48 @@
   <script>
     const expandBtn = document.querySelector('.expand-btn');
     const projectDetails = document.getElementById('project6-details');
+    const caseStudyNavLink = document.getElementById('case-study-nav-link');
+
+    function openCaseStudy() {
+      if (!projectDetails || !expandBtn) return;
+
+      const isOpen = projectDetails.classList.contains('open');
+
+      if (!isOpen) {
+        projectDetails.classList.add('open');
+        expandBtn.setAttribute('aria-expanded', 'true');
+        expandBtn.textContent = 'Hide Case Study ↑';
+      }
+
+      setTimeout(() => {
+        projectDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    }
+
+    function closeCaseStudy() {
+      if (!projectDetails || !expandBtn) return;
+
+      projectDetails.classList.remove('open');
+      expandBtn.setAttribute('aria-expanded', 'false');
+      expandBtn.textContent = 'View Full Case Study ↓';
+    }
 
     if (expandBtn && projectDetails) {
       expandBtn.addEventListener('click', () => {
         const isOpen = projectDetails.classList.contains('open');
 
-        projectDetails.classList.toggle('open');
-        expandBtn.setAttribute('aria-expanded', String(!isOpen));
-        expandBtn.textContent = isOpen ? 'View Full Case Study ↓' : 'Hide Case Study ↑';
-
-        if (!isOpen) {
-          setTimeout(() => {
-            projectDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 120);
+        if (isOpen) {
+          closeCaseStudy();
+        } else {
+          openCaseStudy();
         }
+      });
+    }
+
+    if (caseStudyNavLink) {
+      caseStudyNavLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openCaseStudy();
       });
     }
   </script>
