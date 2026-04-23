@@ -588,6 +588,204 @@
       background: white;
     }
 
+    .case-caption {
+      max-width: 800px;
+      margin-top: 0.75rem;
+      padding-left: 0.2rem;
+      font-size: 0.83rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .case-intro {
+      max-width: 820px;
+      font-size: 1rem;
+      color: var(--ink2);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .case-highlight {
+      max-width: 820px;
+      margin: 1.2rem 0 0;
+      padding: 1rem 1.2rem;
+      border-left: 3px solid var(--red);
+      background: #f1eadf;
+      font-size: 0.9rem;
+      color: var(--ink2);
+    }
+
+    .case-grid,
+    .testing-grid,
+    .comparison-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .case-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 920px;
+    }
+
+    .testing-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 920px;
+    }
+
+    .comparison-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 920px;
+    }
+
+    .case-card,
+    .testing-card,
+    .compare-card {
+      background: white;
+      border: 1px solid var(--ink);
+      padding: 1.2rem;
+    }
+
+    .case-card h5,
+    .testing-card h5,
+    .compare-card h5 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+
+    .case-card p,
+    .testing-card p,
+    .compare-card p {
+      font-size: 0.9rem;
+      color: var(--ink2);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .testing-card .big-stat {
+      font-family: var(--serif);
+      font-size: 2.35rem;
+      line-height: 1;
+      color: var(--red);
+      margin-bottom: 0.55rem;
+    }
+
+    .testing-meta {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.55rem;
+    }
+
+    .compare-label {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.55rem;
+      margin-bottom: 0.8rem;
+      background: var(--red-light);
+      color: var(--red);
+    }
+
+    .process-timeline {
+      max-width: 860px;
+      margin-top: 1.3rem;
+      border-top: 1px solid var(--paper3);
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1.1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--paper3);
+    }
+
+    .process-step .step-num {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 0.15rem;
+    }
+
+    .process-step h5 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .process-step p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink2);
+      font-weight: 300;
+    }
+
+    .placeholder-shot {
+      width: 100%;
+      max-width: 800px;
+      min-height: 320px;
+      margin-top: 1rem;
+      border: 1.5px dashed var(--ink);
+      background: repeating-linear-gradient(
+        -45deg,
+        #f6f1e8,
+        #f6f1e8 18px,
+        #efe7da 18px,
+        #efe7da 36px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .placeholder-shot strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .placeholder-shot span {
+      max-width: 520px;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--ink2);
+    }
+
+    .case-link-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .case-link-row a {
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--ink);
+      padding: 0.8rem 1rem;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .case-link-row a:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-2px);
+    }
+
     #skills {
       border-bottom: 1.5px solid var(--ink);
     }
@@ -881,6 +1079,12 @@
       .case-study-content {
         padding: 2rem 1.5rem;
       }
+
+      .case-grid,
+      .testing-grid,
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 780px) {
@@ -991,7 +1195,77 @@
       .case-study-content h3 {
         font-size: 1.6rem;
       }
+
+      .process-step {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+
+      .placeholder-shot {
+        min-height: 250px;
+        padding: 1.5rem;
+      }
     }
+
+    .testing-shot {
+  width: 100%;
+  max-width: 920px;
+  margin: 1.5rem 0 0;
+}
+
+.testing-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.testing-img {
+  display: block;
+  width: 100%;
+  max-width: 920px;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--ink);
+}
+
+.testing-caption {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* OPTIONAL: if the old placeholder style is still affecting this area, keep this too */
+.placeholder-shot {
+  background: transparent !important;
+  border: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+/* mobile */
+@media (max-width: 780px) {
+  .testing-shot {
+    max-width: 100%;
+  }
+
+  .testing-img {
+    max-width: 100%;
+  }
+
+  .testing-caption {
+    max-width: 100%;
+    text-align: left;
+  }
+}
   </style>
 </head>
 <body>
@@ -1219,7 +1493,7 @@
         Click below to view the full process: problem, critique, redesign decisions, testing, and final outcome.
       </div>
       <div class="proj-link">
-        <a href="https://github.com/bennnyboo3" target="_blank">GitHub ↗</a>
+        <a href="https://github.com/BennyBoo30" target="_blank">GitHub ↗</a>
         <button class="expand-btn" type="button" aria-expanded="false" aria-controls="project6-details">
           View Full Case Study ↓
         </button>
@@ -1229,101 +1503,250 @@
     <div class="project-details" id="project6-details">
       <div class="case-study-content">
         <h3>Case Study: Yale School of Art Website Redesign</h3>
+        <p class="case-intro">
+          This project documents how I redesigned the Yale School of Art website from early critique through wireframes,
+          prototype testing, revision, and the final outcome. The goal was not just to make the site look better, but to
+          make key tasks easier for first-time visitors: understanding what the site is for, finding where to apply, getting
+          help, and navigating the experience on mobile.
+        </p>
 
         <div class="case-block">
           <h4>1. Problem Statement</h4>
           <p>
-            The original Yale School of Art website had a visually cluttered experience that made it difficult for users to
-            quickly understand page hierarchy, navigate content, and complete common tasks. The site lacked clear structure,
-            consistent visual organization, and a more intuitive responsive experience for both desktop and mobile users.
+            The original experience felt visually crowded and hard to scan. In early critique and peer testing, users often
+            described the site as feeling more like an events platform than a university admissions site, which meant the
+            homepage hierarchy was not clearly communicating purpose.
           </p>
           <p>
-            My goal was to redesign the experience so it felt clearer, more modern, easier to navigate, and more accessible
-            without losing the creative identity behind the institution.
+            Beyond clarity, several core actions needed to be easier: finding the Apply page, recognizing help paths,
+            understanding content categories, and moving through the interface comfortably on mobile. My redesign goal was to
+            create a clearer, more structured admissions experience while still keeping the site visually distinctive.
           </p>
+          <div class="case-grid">
+            <div class="case-card">
+              <h5>User problem</h5>
+              <p>First-time visitors struggled to tell whether the site was for admissions, events, or general school information.</p>
+            </div>
+            <div class="case-card">
+              <h5>Usability gap</h5>
+              <p>Navigation hierarchy, help pathways, and some labels created hesitation during task completion.</p>
+            </div>
+            <div class="case-card">
+              <h5>Design goal</h5>
+              <p>Prioritize task clarity, reduce cognitive load, and make the desktop and mobile flows feel more consistent.</p>
+            </div>
+          </div>
         </div>
 
         <div class="case-block">
           <h4>2. Critique and Analysis</h4>
           <p>
-            I began by reviewing the original site’s layout, typography, navigation structure, and content grouping.
-            During this critique, I identified issues with inconsistent hierarchy, dense page composition, and limited
-            clarity for first-time visitors trying to find important information.
-          </p>
-          <p>
-            I focused on the following design gaps:
+            I started by studying the original Yale School of Art website’s layout, typography, content grouping, and navigation.
+            The strongest issue was hierarchy: too many competing elements shared similar visual weight, which made it harder for
+            users to understand where to start and what mattered most.
           </p>
           <ul>
-            <li>Weak visual hierarchy that made content harder to scan</li>
-            <li>Navigation that felt overwhelming and less intuitive</li>
-            <li>Inconsistent spacing and layout rhythm across sections</li>
-            <li>Need for a more polished mobile-first experience</li>
+            <li>Weak visual hierarchy made the homepage harder to scan quickly</li>
+            <li>Events received too much visual attention compared to admissions tasks</li>
+            <li>Navigation categories felt broad or overloaded for first-time users</li>
+            <li>Mobile interactions needed clearer wayfinding and larger touch targets</li>
           </ul>
-         
           <img src="images/YaleOGweb.png" alt="Original Yale School of Art website screenshot" class="case-img" />
+          <p class="case-caption">
+            Original website review. I used this screenshot to analyze hierarchy, density, and how the page emphasized creative
+            content without making the admissions path obvious enough for new visitors.
+          </p>
+          <div class="case-highlight">
+            Key insight: the redesign was not only about aesthetics. It was about helping users immediately understand that this is
+            a university art school site and making the next step to apply, explore programs, or get help feel obvious.
+          </div>
         </div>
 
         <div class="case-block">
           <h4>3. Redesign Process</h4>
           <p>
-            After identifying the main usability and layout issues, I created wireframes and higher-fidelity interface concepts
-            to reorganize the experience. I explored how to simplify navigation, improve readability, and create a stronger
-            sense of structure across the site.
+            I moved through the redesign in stages so every major visual change had a reason behind it. I began with rough sketches,
+            translated those ideas into wireframes, then refined the system into a higher-fidelity prototype that could be tested.
           </p>
-          <p>
-            My redesign decisions focused on:
+
+          <div class="process-timeline">
+            <div class="process-step">
+              <div class="step-num">Step 01</div>
+              <div>
+                <h5>Sketching the structure</h5>
+                <p>I explored multiple ways to simplify navigation, reduce visual competition, and make high-priority actions like Apply and Programs easier to spot.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">Step 02</div>
+              <div>
+                <h5>Building low-fidelity wireframes</h5>
+                <p>I translated the strongest sketch ideas into cleaner wireframes to test spacing, page flow, button placement, and mobile layout decisions before polishing visuals.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">Step 03</div>
+              <div>
+                <h5>Creating the interactive prototype</h5>
+                <p>I refined typography, layout rhythm, and interaction flow so users could move through admissions, events, help, and program information with less friction.</p>
+              </div>
+            </div>
+          </div>
+
+          <img src="images/Sketches.png" alt="Sketches exploring navigation, hierarchy, and page organization for the Yale redesign" class="case-img" />
+          <p class="case-caption">
+            Early concept sketches. These helped me test layout directions quickly and identify where navigation and page hierarchy could be simplified before moving into wireframes.
           </p>
-          <ul>
-            <li>Stronger page hierarchy through typography and layout balance</li>
-            <li>Cleaner spacing to reduce visual clutter</li>
-            <li>More intuitive navigation patterns for desktop and mobile</li>
-            <li>Responsive design decisions that preserved usability across devices</li>
-            <li>A more modern UI while still keeping the project visually distinctive</li>
-          </ul>
-          <img src="images/Sketches.png" alt=sketechs prototype for Yale Redesign" class="case-img" />
-          <img src="images/LowFidwire.png" alt="Wireframe for Yale redesign" class="case-img" />
-          <img src="images/FigmaHighFid.png" alt="Figma prototype for Yale redesign" class="case-img" />
+
+          <img src="images/LowFidwire.png" alt="Low-fidelity wireframe for Yale redesign" class="case-img" />
+          <p class="case-caption">
+            Low-fidelity wireframe. This stage focused on structure, content grouping, and placement of primary actions rather than color or branding details.
+          </p>
+
+          <img src="images/FigmaHighFid.png" alt="High-fidelity Figma prototype for Yale redesign" class="case-img" />
+          <p class="case-caption">
+            High-fidelity prototype. Here I translated the structural decisions into a more polished interface that could be tested for desktop and mobile usability.
+          </p>
         </div>
 
         <div class="case-block">
-          <h4>4. Testing and Feedback</h4>
+          <h4>4. Key Design Decisions</h4>
           <p>
-            I evaluated the redesign through critique, feedback, and review of the user flow. I looked at whether the new design
-            improved navigation clarity, readability, and the overall ease of moving through the site.
+            Peer critique showed that users often interpreted the design as an event platform instead of a university admissions site,
+            struggled with overloaded navigation, and wanted clearer mobile interactions. Those patterns directly shaped the redesign.
           </p>
-          <p>
-            Based on feedback, I refined several parts of the design:
-          </p>
-          <ul>
-            <li>Simplified navigation labels to make sections easier to understand</li>
-            <li>Adjusted spacing and grouping to improve readability</li>
-            <li>Refined visual hierarchy so key content stood out more clearly</li>
-            <li>Improved mobile responsiveness and section flow</li>
-          </ul>
-          <p>
-            These updates helped create a more organized and user-friendly final experience compared to the original version.
-          </p>
+          <div class="comparison-grid">
+            <div class="compare-card">
+              <span class="compare-label">Before</span>
+              <h5>Purpose felt unclear</h5>
+              <p>The homepage gave too much attention to events and broad content, so several testers described it as looking like Canvas or an event planner.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">After</span>
+              <h5>Admissions became the primary message</h5>
+              <p>I re-centered the homepage around applying, program discovery, and requirements so the site communicated university identity faster and with less ambiguity.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">Before</span>
+              <h5>Navigation felt overloaded</h5>
+              <p>Too many competing categories and unclear hierarchy increased cognitive load and made users work harder to find their next step.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">After</span>
+              <h5>Navigation became more intentional</h5>
+              <p>I simplified information architecture, prioritized key tasks, and organized labels more clearly so users could scan faster and move with more confidence.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">Before</span>
+              <h5>Mobile interactions felt cramped</h5>
+              <p>Some participants said targets felt small or inconsistent, especially when trying to navigate back or distinguish similar requirement labels.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">After</span>
+              <h5>Mobile flow was easier to use</h5>
+              <p>I increased emphasis on accessible navigation patterns, clearer labels, and spacing choices that better supported touch interaction on smaller screens.</p>
+            </div>
+          </div>
         </div>
 
         <div class="case-block">
-          <h4>5. Final Product</h4>
+          <h4>5. Testing and What Changed</h4>
           <p>
-            The final redesign presents a more accessible, structured, and modern version of the Yale School of Art website.
-            Compared to the original design, the updated experience offers clearer navigation, improved layout consistency,
-            and a stronger responsive interface for users on multiple screen sizes.
+            I used both peer usability testing and prototype testing to evaluate whether people could complete core tasks without explanation. Across testing rounds, I focused on application flow, help-seeking behavior, dark mode discoverability, and mobile navigation.
+          </p>
+
+          <div class="testing-grid">
+            <div class="testing-card">
+              <div class="big-stat">5</div>
+              <h5>Peer critique participants</h5>
+              <p>Early peer feedback helped reveal bigger conceptual problems, especially that the site looked too much like an events platform instead of a university admissions site.</p>
+              <div class="testing-meta">Early direction finding</div>
+            </div>
+            <div class="testing-card">
+              <div class="big-stat">4</div>
+              <h5>Wireframe testers</h5>
+              <p>Think-aloud testing on the wireframes showed that most tasks were completable, but two repeated issues stood out: the color mode toggle lacked visibility and the Apply path was not instantly obvious for every user.</p>
+              <div class="testing-meta">Structure validation</div>
+            </div>
+            <div class="testing-card">
+              <div class="big-stat">3</div>
+              <h5>Prototype testers</h5>
+              <p>Prototype testing showed stronger overall flow, but it exposed remaining friction around back navigation, clickable branding, help organization, and mobile consistency.</p>
+              <div class="testing-meta">Interaction validation</div>
+            </div>
+          </div>
+
+          <div class="case-grid">
+            <div class="case-card">
+              <h5>Specific testing evidence</h5>
+              <p>In wireframe testing, 2 of 4 users had difficulty noticing the color mode control. One paused for several seconds and another said the button blended into the header, so I moved it out of the header to improve contrast and discoverability.</p>
+            </div>
+            <div class="case-card">
+              <h5>Another repeated issue</h5>
+              <p>1 of 4 wireframe testers tried clicking homepage content before finding Apply. To reduce hesitation around the primary task, I moved Apply to the top of the sidebar so it would be the first navigation item users scanned.</p>
+            </div>
+            <div class="case-card">
+              <h5>Prototype evidence</h5>
+              <p>In the prototype round, 2 of 3 mobile testers tried using the Yale title or image as a home button, and 1 tester restarted navigation because no back path felt obvious. That led me to prioritize clearer return-home behavior and stronger mobile wayfinding.</p>
+            </div>
+          </div>
+
+          <div class="comparison-grid">
+            <div class="compare-card">
+              <span class="compare-label">Issue 01</span>
+              <h5>Color mode discoverability</h5>
+              <p><strong>What happened:</strong> users could complete the task, but the icon blended into the header. <br /><strong>Change made:</strong> I repositioned the toggle so it no longer competed with the title area. <br /><strong>Why it mattered:</strong> the control became easier to notice without changing the wireframe color system.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">Issue 02</span>
+              <h5>Apply path visibility</h5>
+              <p><strong>What happened:</strong> one tester searched the homepage before seeing the Apply button. <br /><strong>Change made:</strong> I moved Apply to the top of the left-side navigation. <br /><strong>Why it mattered:</strong> the site’s highest-priority user task became more visible immediately.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">Issue 03</span>
+              <h5>Help path confusion</h5>
+              <p><strong>What happened:</strong> one prototype tester hesitated between FAQ and Contact, and another re-entered the application instead of asking for help. <br /><strong>Change made:</strong> I clarified help pathways by separating quick answers from direct support. <br /><strong>Why it mattered:</strong> users could better tell where to go when they were stuck.</p>
+            </div>
+            <div class="compare-card">
+              <span class="compare-label">Issue 04</span>
+              <h5>Mobile return-home behavior</h5>
+              <p><strong>What happened:</strong> multiple mobile testers expected the Yale title or image to return them home, and the missing back path created friction. <br /><strong>Change made:</strong> I prioritized clearer back navigation and branding that matches familiar web patterns. <br /><strong>Why it mattered:</strong> navigation felt more predictable on smaller screens.</p>
+            </div>
+          </div>
+        <div class="testing-shot">
+            <figure class="testing-figure">
+              <img
+                src="images/testing.png"
+                alt="User testing summary table and key takeaways from prototype testing"
+                class="testing-img"
+              />
+              <figcaption class="testing-caption">
+               Figure: User testing summary showing task outcomes, time on task, and the key issues that informed the final revisions.
+              </figcaption>
+            </figure>
+          </div>
+
+        <div class="case-block">
+          <h4>6. Final Product</h4>
+          <p>
+            The final redesign presents a cleaner, more navigable version of the Yale School of Art website. Compared to the original, it gives admissions-related actions more visual priority, reduces hierarchy problems, and creates a more consistent desktop-to-mobile experience.
           </p>
           <p>
+            More importantly, the final result is grounded in evidence. Instead of redesigning purely by taste, I used critique and user testing to identify what people found confusing, then made focused revisions tied to those observations.
+          </p>
+          <div class="case-link-row">
             <a href="https://giancarlopretell.github.io/Interaction-Design-Capstone/pages/HomeFrame.html" target="_blank">View Live Project ↗</a>
-          </p>
-          <p class="case-note">
-            
-          </p>
+            <a href="https://www.figma.com/design/fqoenoO4JaLWZZ7y0kLSSS/Assignment-7?node-id=0-1&t=o4rgz5XQBv3WsP4Q-1" target="_blank">View Prototype ↗</a>
+          </div>
           <video class="case-video" controls playsinline>
-          <source src="images/FinalWeb.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+            <source src="images/FinalWeb.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
+          <p class="case-caption">
+            Final prototype walkthrough. This video shows the redesigned experience after iteration, including clearer structure, stronger task prioritization, and a more polished responsive flow.
+          </p>
         </div>
-      </div>
+      </div>      </div>
     </div>
   </section>
 
