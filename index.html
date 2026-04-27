@@ -1270,6 +1270,21 @@
     text-align: left;
   }
 }
+
+.hero-image-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-photo {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -1306,7 +1321,7 @@
 
     <div class="hero-right">
       <div class="hero-image-area">
-        <div class="hero-initials">BO</div>
+        <img src="images/profile.png" alt="Ben Oz profile photo" class="hero-photo">
         <div class="hero-role-tag">Quality Assurance</div>
       </div>
 
